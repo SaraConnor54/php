@@ -1,15 +1,20 @@
 <?php
-$host = "localhost"; // tu localhost
-$user = "root"; // Tu usuario de MySQL
-$password = "Sa230206"; // Tu contraseña de MySQL
-$dbname = "sara"; // Nombre de tu base de datos
+// Configuración de la conexión a la base de datos
+$servidor = "localhost"; // Servidor de MySQL (por defecto es localhost)
+$usuario = "root"; // Usuario de MySQL (por defecto es root en XAMPP)
+$contraseña = "Sa230206"; // Contraseña de MySQL (por defecto está vacía en XAMPP)
+$baseDatos = "sara"; // Cambia por el nombre de tu base de datos
 
 // Crear la conexión
-$conn = new mysqli($host, $user, $password, $dbname);
+$conexion = new mysqli($servidor, $usuario, $contraseña, $baseDatos);
 
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Error de conexión: " . $conn->connect_error);
+// Verificar conexión
+if ($conexion->connect_error) {
+    die("Conexión fallida: " . $conexion->connect_error);
 }
-echo "Conexión exitosa!";
+
+if (basename($_SERVER['PHP_SELF']) === 'conexion.php') {
+    echo "Conexión exitosa.";
+}
 ?>
+
